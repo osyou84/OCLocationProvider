@@ -43,6 +43,10 @@ public final class OCLocationProvider: NSObject {
         locationManager.stopUpdatingLocation()
     }
     
+    public func getCurrentLocation() -> CLLocationCoordinate2D? {
+        return locationManager.location?.coordinate
+    }
+    
     public func getDistance(targetLatitude: Double, targetLongitude: Double) -> Double {
         guard let currentLocation = currentLocation else { return .zero }
         
