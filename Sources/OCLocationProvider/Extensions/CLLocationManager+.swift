@@ -10,11 +10,13 @@ import CoreLocation
 extension CLLocationManager {
     public static var `default`: CLLocationManager {
         let manager = CLLocationManager()
-         manager.pausesLocationUpdatesAutomatically = true
-         manager.allowsBackgroundLocationUpdates = true
-         manager.desiredAccuracy = kCLLocationAccuracyBest
-         manager.distanceFilter = 10
+        #if !os(watchOS)
+        manager.pausesLocationUpdatesAutomatically = true
+        #endif
+        manager.allowsBackgroundLocationUpdates = true
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.distanceFilter = 10
          
-         return manager
+        return manager
     }
 }
